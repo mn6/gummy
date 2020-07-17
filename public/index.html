@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Ooblets Save Editor</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="cent">
+      <div class="step step1 show">
+        <h1>Step 1: Upload your ooblets_toc.sav file</h1>
+        <span class="hint">Can be found in <i>C:\Users\YOUR_USER\AppData\LocalLow\Glumberland\Ooblets</i></span>
+        <br><span class="hint">Disclaimer: I have no affiliation with ooblets, continue at your own risk!</span>
+        <input type="file" accept=".sav" id="filePicker"></input>
+      </div>
+
+      <div class="step step2 hide">
+          <h1>Step 2: Choose the save file you want to edit</h1>
+          <div id="saveFiles"></div>
+      </div>
+
+      <div class="step step3 hide">
+        <h1>Step 3: Find the <span class="saveFileNumberReplace"></span>.sav file</h1>
+        <span class="hint">Can be found in
+          <i>
+            C:\Users\YOUR_USER\AppData\LocalLow\Glumberland\Ooblets\SaveData\<span class="saveFileNameReplace"></span>\<span class="saveFileNumberReplace"></span>.sav
+          </i>
+        </span>
+        <input type="file" accept=".sav" id="savFilePicker"></input>
+      </div>
+
+      <div class="step step4 hide">
+        <h1>Step 4: Edit save</h1>
+        <div class="saveEditor">
+          <div class="long">
+            <label for="name">Name</label>
+            <input type="text" id="name">
+          </div>
+          <div class="inputs">
+            <div class="inputGroup">
+              <label for="gummies"><img src="./img/Sprite/justGummy.png" alt="Gummies"></label>
+              <input id="gummies" type="text"></input>
+            </div>
+            <div class="inputGroup">
+              <label for="wishies"><img src="./img/Sprite/Wishies.png" alt="Wishies"></label>
+              <input id="wishies" type="text"></input>
+            </div>
+            <div class="inputGroup">
+              <label for="level" title="Level">Lv</label>
+              <input id="level" type="text"></input>
+            </div>
+          </div>
+          <div class="selects">
+            <div class="inputGroup">
+              <label for="wateringCanLevel"><img src="./img/Sprite/sticker_wateringCan.png" alt="Watering Can Level"></label>
+              <select id="wateringCanLevel">
+                <option value="0">Default Can</option>
+                <option value="1">Drizzle Dribbler</option>
+                <option value="2">Dandy Dribbler</option>
+              </select>
+            </div>
+            <div class="inputGroup">
+              <label for="weather"><img src="./img/Sprite/weatherhIllustrations_0.png" alt="Weather"></label>
+              <select id="weather">
+                <option value="sunny">Sunny</option>
+                <option value="rainy">Rainy</option>
+              </select>
+            </div>
+          </div>
+          <div class="ranges">
+            <img src="./img/Sprite/weatherhIllustrations_0.png" alt="Morning">
+            <input type="range" min="0" max="1420" id="timeOfDayInTicks">
+            <img src="./img/Sprite/weatherhIllustrations_1.png" alt="Night">
+          </div>
+          <div class="position">
+            <h2>Position</h2>
+            <div class="positionGroup">
+              <input id="x" type="number">
+              <label for="x">x (left-right)</label>
+            </div>
+            <div class="positionGroup">
+              <input id="y" type="number">
+              <label for="y">y (height [lowest is 0])</label>
+            </div>
+            <div class="positionGroup">
+              <input id="z" type="number">
+              <label for="z">z (up-down)</label>
+            </div>
+            <h3></h3>
+          </div>
+        </div>
+        <button id="saveSav">Done</button>
+      </div>
+
+      <div class="step step5 hide">
+        <h1>Replace the <span class="saveFileNumberReplace"></span>.sav file</h1>
+        <span class="hint">Can be found in
+          <i>
+            C:\Users\YOUR_USER\AppData\LocalLow\Glumberland\Ooblets\SaveData\<span class="saveFileNameReplace"></span>\<span class="saveFileNumberReplace"></span>.sav
+          </i>
+        </span>
+        <button class="download">Download <span class="saveFileNumberReplace"></span>.sav</button>
+      </div>
+    </div>
+  </body>
+  <script src="jquery.js"></script>
+  <script src="index.js"></script>
+</html>

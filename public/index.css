@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+body {
+  font-family: 'Fredoka One', cursive;
+  background: #78c9dc;
+}
+* {
+  font-family: 'Fredoka One', cursive;
+  color: white;
+}
+
+#cent {
+  background: #47b3cc;
+  color: white;
+  border-radius: 1em;
+  padding: 3em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+.hint, .hint i, .hint span {
+  color: #e3e3e3;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+input[accept=".sav"] {
+  display: block;
+  margin-top: 2em;
+}
+
+button {
+  border: 2px white solid !important;
+  padding: 10px;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:focus {
+  opacity: 0.5;
+  outline: 0 !important;
+}
+
+input[type="text"], select {
+  color: #47b3cc !important;
+  width: 53px !important;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  height: 24px;
+}
+
+select option {
+  color: #47b3cc !important;
+}
+
+button#saveSav {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.inputGroup {
+  flex-grow: 1;
+}
+
+.inputs, .selects {
+    display: flex;
+}
+
+.saveEditor img {
+  vertical-align: middle;
+  margin-bottom: 1px;
+  width: 1.5em;
+}
+
+.saveEditor {
+  min-width: 21em;
+}
+
+select#wateringCanLevel {
+  width: 140px !important;
+}
+
+select#weather {
+  width: 83px !important;
+}
+
+input#name {
+  width: 119px !important;
+}
+
+.ranges {
+  width: 100%;
+  margin-top: 17px;
+}
+
+.ranges input {
+ width: 80%
+}
+
+.inputGroup {
+  text-align: left;
+}
+
+.inputGroup:last-child {
+  text-align: right !important;
+}
+
+.inputGroup:nth-child(2) {
+  text-align: center;
+}
+
+.saveEditor > div {
+  margin-top: 11px;
+}
+
+.position input {
+  color: #47b3cc;
+  border-radius: 5px;
+  border: 0;
+  width: min-content;
+}
