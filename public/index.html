@@ -2,6 +2,8 @@
   <head>
     <title>Ooblets Save Editor</title>
     <link rel="stylesheet" href="index.css">
+    <meta property="og:title" content="Ooblets Save Editor" />
+    <meta property="og:image" content="./img/Sprite/justGummy.png" />
   </head>
   <body>
     <div id="bg"></div>
@@ -31,10 +33,7 @@
       <div class="step step4 hide">
         <h1>Step 4: Edit save</h1>
         <div class="saveEditor">
-          <div class="long">
-            <label for="name">Name</label>
-            <input type="text" id="name">
-          </div>
+          <h2>Stats + world</h2>
           <div class="inputs">
             <div class="inputGroup">
               <label for="gummies"><img src="./img/Sprite/justGummy.png" alt="Gummies"></label>
@@ -104,8 +103,24 @@
               <input id="z" type="number">
               <label for="z">z (up-down)</label>
             </div>
-            <h3>Position Presets</h3>
+            <h4>Position Presets</h3>
             <button class="secondary positionPreset" scene="55" x="-50.326812744140628" y="0.09900389611721039" z="-13.715348243713379">Badgetown (entrance)</button>
+          </div>
+          <div class="ooblets">
+            <h2>Ooblets</h2>
+            <div class="tableContainer">
+              <table cellspacing="0">
+                <thead>
+                  <th>Species</th>
+                  <th class="nickName">Nickname</th>
+                  <th class="level">Level</th>
+                  <th>Rarity</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <button id="saveSav">Done</button>

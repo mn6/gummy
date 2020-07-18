@@ -18,7 +18,7 @@ body {
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 .hint, .hint i, .hint span {
   color: #e3e3e3;
@@ -153,4 +153,28 @@ div#bg {
 button.download {
   display: block;
   margin-top: 25px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  text-align: left !important;
+}
+
+.saveEditor .species > img {
+  height: 2em;
+  width: auto;
+}
+
+.nickName {
+  width: 97px;
+}
+
+.level {
+  width: 50px;
+}
+
+.tableContainer {
+  max-height: 219px;
+  overflow-y: scroll;
+  border-bottom: 1px solid white;
 }
