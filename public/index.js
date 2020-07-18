@@ -95,27 +95,36 @@ function doSaveCollection(json) {
     if (!~[1, 6, 7].indexOf(ooblet.status)) return
 
     let oobletDOM = $(`
-    <tr class="ooblet" species="${ooblet.name}" nickName="${ooblet.nickName}" xp="${ooblet.XP}" level="${ooblet.level}" status="${ooblet.status}" rarity="${ooblet.rarity}">
-      <td class="species"><img src="./img/Sprite/${ooblet.name.split('_')[0]}_common.png" /> ${ooblet.name.split('_')[0]}</td>
-      <td class="nickName">
-        <input type="text" style="width: 100% !important;">
-      </td>
-      <td class="level">
-        <input type="text" style="width: 100% !important;">
-      </td>
-      <td class="rarity">
-        <select class="oobletRarity" style="width: 100% !important;">
-          <option value="0">Common</option>
-          <option value="1">Uncommon</option>
-          <option value="2">Gleamy</option>
-        </select>
-      </td>
-    </tr>`)
+      <tr class="ooblet" species="${ooblet.name}" nickName="${ooblet.nickName}" xp="${ooblet.XP}" level="${ooblet.level}" status="${ooblet.status}" rarity="${ooblet.rarity}">
+        <td class="species"><img src="./img/Sprite/${ooblet.name.split('_')[0]}_common.png" /> ${ooblet.name.split('_')[0]}</td>
+        <td class="nickName">
+          <input type="text" style="width: 100% !important;">
+        </td>
+        <td class="level">
+          <input type="text" style="width: 100% !important;">
+        </td>
+        <td class="rarity">
+          <select class="oobletRarity" style="width: 100% !important;">
+            <option value="0">Common</option>
+            <option value="1">Uncommon</option>
+            <option value="2">Gleamy</option>
+          </select>
+        </td>
+        <td class="status">
+          <select class="oobletStatus" style="width: 100% !important;">
+            <option value="1">Following</option>
+            <option value="6" disabled>In Farm</option>
+            <option value="7">At Home</option>
+          </select>
+        </td>
+      </tr>
+    `)
 
     oobletDOM.find('.nickName input').val(ooblet.nickName)
     oobletDOM.find('.level input').val(ooblet.level)
     oobletDOM.find(`.oobletRarity [value="${ooblet.rarity}"]`)[0].selected = true
-    oobletDOM.end()
+    oobletDOM.find(`.oobletStatus [value="${ooblet.status}"]`)[0].selected = true
+    if (ooblet.status == 6) oobletDOM.find('.oobletStatus').attr('disabled', 'true').find('[disabled]').removeAttr('disabled')
 
     $('.ooblets table tbody').append(oobletDOM)
   })
@@ -151,33 +160,35 @@ function handleDone() {
     })
     if (empty[0]) return alert('No fields may be empty!')
   
-    invManager.money = $('#gummies').val()
-    invManager.sparklePoints.amt = $('#wishies').val()
-    invManager.playerLevel = $('#level').val()
-    invManager.wateringCanLevel = $('#wateringCanLevel').val()
+    invManager.money = +$('#gummies').val()
+    invManager.sparklePoints.amt = +$('#wishies').val()
+    invManager.playerLevel = +$('#level').val()
+    invManager.wateringCanLevel = +$('#wateringCanLevel').val()
   
     gameManager.todayDayTag = $('#weather').val()
-    gameManager.timeOfDayInTicks = $('#timeOfDayInTicks').val()
+    gameManager.timeOfDayInTicks = +$('#timeOfDayInTicks').val()
   
     metaManager.lastKnownPosition.x = +$('#x').val()
     metaManager.lastKnownPosition.y = +$('#y').val()
     metaManager.lastKnownPosition.z = +$('#z').val()
-    metaManager.lastKnownScene = $('#lastKnownScene').val()
+    metaManager.lastKnownScene = +$('#lastKnownScene').val()
   
     // Ooblets
     $('.ooblet').each(function () {
       let thisLevel = $(this).find('.level input').val()
       let thisRarity = $(this).find('.rarity select').val()
       let thisNickName = $(this).find('.nickName input').val()
+      let thisStatus = $(this).find('.status select').val()
 
       let filteredOoblet = oobletStats.filter(ooblet => ooblet.nickName == $(this).attr('nickName') && ooblet.level == $(this).attr('level') && ooblet.XP == $(this).attr('xp') && ooblet.status == $(this).attr('status') && ooblet.rarity == $(this).attr('rarity') && ooblet.name == $(this).attr('species'))[0]
 
-      if (filteredOoblet.level == thisLevel && filteredOoblet.rarity == thisRarity && filteredOoblet.nickName == thisNickName) return
+      if (filteredOoblet.level == thisLevel && filteredOoblet.rarity == thisRarity && filteredOoblet.nickName == thisNickName && filteredOoblet.status == thisStatus) return
 
       // Has been changed, save this
       filteredOoblet.level = thisLevel
       filteredOoblet.rarity = thisRarity
       filteredOoblet.nickName = thisNickName
+      filteredOoblet.status = thisStatus
 
       let index = oobletStats.findIndex(ooblet => ooblet.nickName == $(this).attr('nickName') && ooblet.level == $(this).attr('level') && ooblet.XP == $(this).attr('xp') && ooblet.status == $(this).attr('status') && ooblet.rarity == $(this).attr('rarity') && ooblet.name == $(this).attr('species'))
       window.saveFile.listOfOobletStats[index] = filteredOoblet

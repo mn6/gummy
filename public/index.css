@@ -178,3 +178,11 @@ table, th, td {
   overflow-y: scroll;
   border-bottom: 1px solid white;
 }
+
+table th, table td {
+  padding: 6px;
+}
+
+td.delete {
+  text-align: center !important;
+}
