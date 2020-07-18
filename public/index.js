@@ -86,6 +86,7 @@ function doSaveCollection(json) {
   $('#x').val(metaManager.lastKnownPosition.x)
   $('#y').val(metaManager.lastKnownPosition.y)
   $('#z').val(metaManager.lastKnownPosition.z)
+  $('#lastKnownScene').val(metaManager.lastKnownScene)
 
   // Switch it up!
   containerSwitch('.step4')
@@ -107,29 +108,34 @@ function download(data, filename, type) {
 }
 
 function handleDone() {
-  const gameManager = window.saveFile.listOfGameManager[1]
-  const invManager = window.saveFile.listOfInventoryManager.filter(inv => inv.playerName === window.playerName)[0]
-  const metaManager = window.saveFile.listOfMetaManager[1]
-
-  let empty = $('.saveEditor input').filter(function () {
-    return $(this).val().length < 1;
-  })
-  if (empty[0]) return alert('No fields may be empty!')
-
-  invManager.money = $('#gummies').val()
-  invManager.sparklePoints.amt = $('#wishies').val()
-  invManager.playerLevel = $('#level').val()
-  invManager.wateringCanLevel = $('#wateringCanLevel').val()
-  invManager.playerName = $('#name').val()
-
-  gameManager.todayDayTag = $('#weather').val()
-  gameManager.timeOfDayInTicks = $('#timeOfDayInTicks').val()
-
-  metaManager.lastKnownPosition.x = $('#x').val()
-  metaManager.lastKnownPosition.x = $('#y').val()
-  metaManager.lastKnownPosition.x = $('#z').val()
-
-  containerSwitch('.step5')
+  try {
+    const gameManager = window.saveFile.listOfGameManager[1]
+    const invManager = window.saveFile.listOfInventoryManager.filter(inv => inv.playerName === window.playerName)[0]
+    const metaManager = window.saveFile.listOfMetaManager[1]
+  
+    let empty = $('.saveEditor input').filter(function () {
+      return $(this).val().length < 1;
+    })
+    if (empty[0]) return alert('No fields may be empty!')
+  
+    invManager.money = $('#gummies').val()
+    invManager.sparklePoints.amt = $('#wishies').val()
+    invManager.playerLevel = $('#level').val()
+    invManager.wateringCanLevel = $('#wateringCanLevel').val()
+    invManager.playerName = $('#name').val()
+  
+    gameManager.todayDayTag = $('#weather').val()
+    gameManager.timeOfDayInTicks = $('#timeOfDayInTicks').val()
+  
+    metaManager.lastKnownPosition.x = +$('#x').val()
+    metaManager.lastKnownPosition.x = +$('#y').val()
+    metaManager.lastKnownPosition.x = +$('#z').val()
+    metaManager.lastKnownScene = $('#lastKnownScene').val()
+  
+    containerSwitch('.step5')
+  } catch (err) {
+    alert('Error with inputs provided!')
+  }
 }
 
 $('.download').on('click', () => {
@@ -138,4 +144,11 @@ $('.download').on('click', () => {
 
 $('img[alt]').each(function () {
   $(this).attr('title', $(this).attr('alt'))
+})
+
+$('.positionPreset').on('click', function () {
+  $('#x').val($(this).attr('x'))
+  $('#y').val($(this).attr('y'))
+  $('#z').val($(this).attr('z'))
+  $('#lastKnownScene').val($(this).attr('scene'))
 })

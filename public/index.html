@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
+    <div id="bg"></div>
     <div id="cent">
       <div class="step step1 show">
         <h1>Step 1: Upload your ooblets_toc.sav file</h1>
@@ -62,6 +63,7 @@
               <select id="weather">
                 <option value="sunny">Sunny</option>
                 <option value="rainy">Rainy</option>
+                <option value="gleamy">Gleamy</option>
               </select>
             </div>
           </div>
@@ -72,6 +74,24 @@
           </div>
           <div class="position">
             <h2>Position</h2>
+            <div class="positionGroup">
+              <label for="lastKnownScene">Area</label>
+              <select id="lastKnownScene">
+                <optgroup label="Main Areas">
+                    <option value="3">Player Farm</option>
+                    <option value="55">Badgetown</option>
+                    <option value="7">Mamoonia</option>
+                </optgroup>
+                <optgroup label="Other">
+                    <option value="12">Badgetown Tower Room</option>
+                    <option value="10">Town Hall</option>
+                    <option value="8">Frunbuns Clubhouse</option>
+                    <option value="23">Peaksnubs Clubhouse</option>
+                    <option value="24">Mossprouts Clubhouse</option>
+                    <option value="47">Dance Barn</option>
+                </optgroup>
+              </select>
+            </div>
             <div class="positionGroup">
               <input id="x" type="number">
               <label for="x">x (left-right)</label>
@@ -84,7 +104,8 @@
               <input id="z" type="number">
               <label for="z">z (up-down)</label>
             </div>
-            <h3></h3>
+            <h3>Position Presets</h3>
+            <button class="secondary positionPreset" scene="55" x="-50.326812744140628" y="0.09900389611721039" z="-13.715348243713379">Badgetown (entrance)</button>
           </div>
         </div>
         <button id="saveSav">Done</button>
